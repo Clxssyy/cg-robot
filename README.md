@@ -2,6 +2,8 @@
 
 A simple robot made with Three.js
 
+View the robot [here](cg-robot.vercel.app)!
+
 ## Features
 
 - Use `c` to change the robots color
