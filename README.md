@@ -2,7 +2,7 @@
 
 A simple robot made with Three.js
 
-View the robot [here](cg-robot.vercel.app)!
+View the robot [here](https://cg-robot.vercel.app)!
 
 ## Features
 
