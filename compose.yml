@@ -1,0 +1,7 @@
+services:
+
+  robot:
+    image: clxssy/robot
+    ports:
+      - "5173:5173"
+
