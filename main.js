@@ -126,7 +126,23 @@ accessory3.position.z = 5;
 
 // Add all parts to the same mesh
 const robot = new THREE.Group();
-robot.add(head, hat, eye, eye2, body, backpack, arm, arm2, leg, leg2, foot, foot2, accessory, accessory2, accessory3);
+robot.add(
+  head,
+  hat,
+  eye,
+  eye2,
+  body,
+  backpack,
+  arm,
+  arm2,
+  leg,
+  leg2,
+  foot,
+  foot2,
+  accessory,
+  accessory2,
+  accessory3
+);
 
 scene.add(robot);
 
@@ -140,7 +156,7 @@ function jump() {
 
   if (jumpHeight < 0) {
     jumping = false;
-    while(jumpHeight < 5) {
+    while (jumpHeight < 5) {
       robot.position.y -= 0.5;
       jumpHeight += 0.5;
     }
@@ -150,6 +166,36 @@ function jump() {
 function spin() {
   robot.rotation.y += 0.1;
 }
+
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'hat') {
+    hat.material.color = new THREE.Color(
+      Math.random(),
+      Math.random(),
+      Math.random()
+    );
+  }
+
+  if (e.target.id === 'backpack') {
+    backpack.material.color = new THREE.Color(
+      Math.random(),
+      Math.random(),
+      Math.random()
+    );
+  }
+
+  if (e.target.id === 'robot') {
+    changeRobotColor();
+  }
+
+  if (e.target.id === 'jump') {
+    jumping = !jumping;
+  }
+
+  if (e.target.id === 'spin') {
+    spinning = !spinning;
+  }
+});
 
 // Rendering
 function animate() {
@@ -174,34 +220,38 @@ function animate() {
 
 animate();
 
+function changeRobotColor() {
+  const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+  const green = new THREE.Color(0x00ff00);
+  const red = new THREE.Color(0xff1100);
+  body.material.color = color;
+  head.material.color = color;
+  arm.material.color = color;
+  arm2.material.color = color;
+  leg.material.color = color;
+  leg2.material.color = color;
+  foot.material.color = color;
+  foot2.material.color = color;
+
+  if (eye.material.color.equals(green)) {
+    eye.material.color = red;
+    eye2.material.color = red;
+    accessory.material.color = red;
+    accessory2.material.color = red;
+    accessory3.material.color = red;
+  } else {
+    eye.material.color = green;
+    eye2.material.color = green;
+    accessory.material.color = green;
+    accessory2.material.color = green;
+    accessory3.material.color = green;
+  }
+}
+
 // Handle inputs
 document.addEventListener('keypress', (event) => {
   if (event.key === 'c') {
-    const color = new THREE.Color(Math.random(), Math.random(), Math.random());
-    const green = new THREE.Color(0x00ff00);
-    const red = new THREE.Color(0xff1100);
-    body.material.color = color;
-    head.material.color = color;
-    arm.material.color = color;
-    arm2.material.color = color;
-    leg.material.color = color;
-    leg2.material.color = color;
-    foot.material.color = color;
-    foot2.material.color = color;
-
-    if (eye.material.color.equals(green)) {
-      eye.material.color = red;
-      eye2.material.color = red;
-      accessory.material.color = red;
-      accessory2.material.color = red;
-      accessory3.material.color = red;
-    } else {
-      eye.material.color = green;
-      eye2.material.color = green;
-      accessory.material.color = green;
-      accessory2.material.color = green;
-      accessory3.material.color = green;
-    }
+    changeRobotColor();
   }
 
   // Jump

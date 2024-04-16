@@ -2,14 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>My first three.js app</title>
+    <title>Three.js Robot</title>
     <style>
       body {
         margin: 0;
+        overflow: hidden;
+      }
+
+      .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        color: #fff;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
       }
     </style>
   </head>
   <body>
+    <div class="menu">
+      <h1>Menu</h1>
+      <button id="hat">Change Hat</button>
+      <button id="backpack">Change Backpack</button>
+      <button id="robot">Change Robot (c)</button>
+      <button id="spin">Spin (s)</button>
+      <button id="jump">Jump (j)</button>
+    </div>
     <canvas id="bg"></canvas>
     <script type="module" src="/main.js"></script>
   </body>
